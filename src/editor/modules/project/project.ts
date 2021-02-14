@@ -1,18 +1,35 @@
-import type { IDocument } from './document';
+interface IProjectData<T> {
+  name: string;
+  meta: IProjectMeta;
+  document: T | null;
+}
 
-const DEFAULT_NAME = 'untitled';
+interface IProjectMeta {
+  [key: string]: any;
+}
 
 interface IProjectOptions {
   name?: string;
 }
 
-class Project {
-  document: IDocument | null = null;
-  name: string = '';
+const DEFAULT_NAME = 'Untitled';
 
-  constructor(options: IProjectOptions) {
-    this.name = options.name || DEFAULT_NAME;
+abstract class Project<T> {
+  name: string = DEFAULT_NAME;
+  meta: IProjectMeta = {};
+
+  constructor(name: string, meta: IProjectMeta | null, public document: T) {
+    if (name) this.name = name;
+    if (meta) this.meta = meta;
+  }
+
+  toJson(): IProjectData<T> {
+    return {
+      name: this.name,
+      meta: this.meta,
+      document: this.document,
+    };
   }
 }
 
-export { Project, IProjectOptions };
+export { Project, IProjectData, IProjectMeta, IProjectOptions };

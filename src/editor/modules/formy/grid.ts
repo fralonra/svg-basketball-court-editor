@@ -1,5 +1,4 @@
-import { BaseComponent, TLayout, ILayoutComponent } from './base';
-import { IStyleModule } from '../types';
+import { BaseComponent, ILayoutComponent, TLayout } from './base';
 
 interface IGridComponentLayoutComponent extends ILayoutComponent {
   label?: string;
@@ -7,11 +6,6 @@ interface IGridComponentLayoutComponent extends ILayoutComponent {
 }
 
 type TGridComponentLayout = TLayout<IGridComponentLayoutComponent>;
-
-interface IGridComponentStyleModule extends IStyleModule {
-  grid?: string;
-  item?: string;
-}
 
 abstract class GridComponent extends BaseComponent {
   protected itemEls: HTMLElement[] = [];
@@ -26,11 +20,6 @@ abstract class GridComponent extends BaseComponent {
       this.itemEls.push(itemEl);
     });
     this.onLayout();
-  }
-
-  setupStyle(style: IGridComponentStyleModule): void {
-    this.el.className = style.grid || 'grid';
-    this.itemEls.forEach((el) => (el.className = style.item || 'item'));
   }
 
   protected onLayout(): void {}
@@ -50,4 +39,4 @@ abstract class GridComponent extends BaseComponent {
   }
 }
 
-export { GridComponent, TGridComponentLayout, IGridComponentStyleModule };
+export { GridComponent, TGridComponentLayout };

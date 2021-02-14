@@ -1,4 +1,4 @@
-import { BaseComponent } from '../base';
+import { BaseComponent } from '../../modules/formy';
 import style from './nodePanel.module.css';
 
 interface INode {
@@ -46,7 +46,7 @@ class NodePanel<T extends INode> extends BaseComponent {
 
     if (node.children) {
       for (const child of node.children) {
-        this.setupNode(child, element, callback);
+        this.setupNode(child as T, element, callback);
       }
     }
 

@@ -1,4 +1,4 @@
-import { BaseComponent } from '../base';
+import { BaseComponent } from '../../modules/formy';
 import style from './workspace.module.css';
 
 class Workspace extends BaseComponent {
@@ -9,10 +9,12 @@ class Workspace extends BaseComponent {
     this.initEvents();
   }
 
-  clear(): void {}
+  clear(): void {
+    this.el.innerHTML = '';
+  }
 
   render(element: Element): void {
-    this.el.innerHTML = '';
+    this.clear();
     this.el.appendChild(element);
   }
 

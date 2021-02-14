@@ -2,7 +2,7 @@
   "tag": "svg",
   "attrs": {
     "width": 15,
-    "height": 28,
+    "height": 14,
     "xmlns": "http://www.w3.org/2000/svg"
   },
   "children": [
@@ -15,12 +15,138 @@
       "children": [
         {
           "tag": "rect",
-          "description": "half-court",
+          "description": "left-low",
+          "attrs": {
+            "x": 0.9,
+            "y": 0,
+            "width": 4.15,
+            "height": 2.9,
+            "stroke": "#000"
+          }
+        },
+        {
+          "tag": "rect",
+          "description": "left-low-paint",
+          "attrs": {
+            "x": 5.05,
+            "y": 0,
+            "width": 2.45,
+            "height": 2.9,
+            "stroke": "#000"
+          }
+        },
+        {
+          "tag": "rect",
+          "description": "left-low-paint",
+          "attrs": {
+            "x": 7.5,
+            "y": 0,
+            "width": 2.45,
+            "height": 2.9,
+            "stroke": "#000"
+          }
+        },
+        {
+          "tag": "rect",
+          "description": "right-low",
+          "attrs": {
+            "x": 9.95,
+            "y": 0,
+            "width": 4.15,
+            "height": 2.9,
+            "stroke": "#000"
+          }
+        },
+        {
+          "tag": "path",
+          "description": "left-elbow",
+          "attrs": {
+            "d": "M 0.9 2.9 H 5.05 V 7.725 A 6.75 6.75 0 0 1 0.9 2.9",
+            "stroke": "#000"
+          }
+        },
+        {
+          "tag": "rect",
+          "description": "left-high-paint",
+          "attrs": {
+            "x": 5.05,
+            "y": 2.9,
+            "width": 2.45,
+            "height": 2.9,
+            "stroke": "#000"
+          }
+        },
+        {
+          "tag": "rect",
+          "description": "right-high-paint",
+          "attrs": {
+            "x": 7.5,
+            "y": 2.9,
+            "width": 2.45,
+            "height": 2.9,
+            "stroke": "#000"
+          }
+        },
+        {
+          "tag": "path",
+          "description": "right-elbow",
+          "attrs": {
+            "d": "M 14.1 2.9 H 9.95 V 7.725 A 6.75 6.75 0 0 0 14.1 2.9",
+            "stroke": "#000"
+          }
+        },
+        {
+          "tag": "path",
+          "description": "high",
+          "attrs": {
+            "d": "M 5.05 5.8 H 9.95 V 7.725 A 6.75 6.75 0 0 1 5.05 7.725",
+            "stroke": "#000"
+          }
+        },
+        {
+          "tag": "rect",
+          "description": "left-corner",
           "attrs": {
             "x": 0,
             "y": 0,
-            "width": 15,
-            "height": 14
+            "width": 0.9,
+            "height": 2.9,
+            "stroke": "#000"
+          }
+        },
+        {
+          "tag": "path",
+          "description": "left-3pt-area",
+          "attrs": {
+            "d": "M 0 2.9 H 0.9 A 6.75 6.75 0 0 0 5.05 7.725 V 14.0 H 0 V 2.9",
+            "stroke": "#000"
+          }
+        },
+        {
+          "tag": "path",
+          "description": "center-3pt-area",
+          "attrs": {
+            "d": "M 5.05 7.725 A 6.75 6.75 0 0 0 9.95 7.725 V 14.0 H 5.05 V 7.725",
+            "stroke": "#000"
+          }
+        },
+        {
+          "tag": "path",
+          "description": "right-3pt-area",
+          "attrs": {
+            "d": "M 15.0 2.9 H 14.1 A 6.75 6.75 0 0 1 9.95 7.725 V 14.0 H 15.0 V 2.9",
+            "stroke": "#000"
+          }
+        },
+        {
+          "tag": "rect",
+          "description": "right-corner",
+          "attrs": {
+            "x": 14.1,
+            "y": 0,
+            "width": 0.9,
+            "height": 2.9,
+            "stroke": "#000"
           }
         }
       ]

@@ -2,12 +2,16 @@ import { Editor } from './editor';
 
 const toolbarData = [
   {
-    id: 'toolbar-save',
-    label: 'Save',
+    id: 'toolbar-load-json',
+    label: 'Load Json',
   },
   {
-    id: 'toolbar-close',
-    label: 'Close',
+    id: 'toolbar-save-json',
+    label: 'Save To Json',
+  },
+  {
+    id: 'toolbar-save-svg',
+    label: 'Save To Svg',
   },
 ];
 

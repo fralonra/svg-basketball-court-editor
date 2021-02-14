@@ -1,16 +1,13 @@
 import type { SVGNode } from '.';
-import type { IDocument } from '../project';
 
-class SVGDocument implements IDocument {
-  root: SVGNode | null = null;
-
-  init(): void {}
+class SVGDocument {
+  constructor(public root: SVGNode) {}
 
   toElement(
     callback?: (element: SVGElement, node: SVGNode) => void,
   ): SVGElement {
     if (!this.root) {
-      throw new Error('No root node found for document.s');
+      throw new Error('No root node found for document');
     }
 
     return this.root.toElement(callback);

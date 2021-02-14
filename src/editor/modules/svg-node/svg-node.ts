@@ -4,14 +4,14 @@ interface ISVGNodeJsonObject {
   tag: keyof SVGElementTagNameMap;
   description?: string;
   attrs: {
-    [key: string]: string;
+    [key: string]: string | number;
   };
   children?: SVGNode[];
 }
 
 class SVGNode {
   attrs: {
-    [key: string]: string;
+    [key: string]: string | number;
   } = {};
   children: SVGNode[] = [];
 
@@ -38,7 +38,7 @@ class SVGNode {
     this.children.push(child);
   }
 
-  set(key: string, value: string): void {
+  set(key: string, value: string | number): void {
     this.attrs[key] = value;
   }
 
@@ -52,7 +52,7 @@ class SVGNode {
     for (const attr in this.attrs) {
       const namespace =
         attr.split(':')[0] === 'xmlns' ? 'http://www.w3.org/2000/xmlns/' : null;
-      el.setAttributeNS(namespace, attr, this.attrs[attr]);
+      el.setAttributeNS(namespace, attr, String(this.attrs[attr]));
     }
     for (const child of this.children) {
       el.appendChild(child.toElement(callback));
@@ -65,4 +65,4 @@ class SVGNode {
   }
 }
 
-export { SVGNode };
+export { SVGNode, ISVGNodeJsonObject };

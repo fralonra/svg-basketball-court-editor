@@ -10,6 +10,11 @@
     execa "^5.0.0"
     npm-run-path "^4.0.1"
 
+browser-fs-access@^0.13.1:
+  version "0.13.1"
+  resolved "https://registry.yarnpkg.com/browser-fs-access/-/browser-fs-access-0.13.1.tgz#41da8f61dcc6f7597b76cbaa0f96c9eeedf7d25d"
+  integrity sha512-62bg/rd018yTHMmt0nvJ8W5aJ5+2MvpxCEsgpw9wbsGiEJqs1M+HgvTHSJjyef+vEfJxDFht3ykBFQ5BiFPIbA==
+
 cross-spawn@^7.0.3:
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-7.0.3.tgz#f73a85b9d5d41d045551c177e2882d4ac85728a6"

@@ -1,4 +1,4 @@
-import { BaseComponent } from '../base';
+import { BaseComponent } from '../../modules/formy';
 
 import style from './statusbar.module.css';
 

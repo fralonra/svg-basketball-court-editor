@@ -1,10 +1,10 @@
 import type { Project } from './project';
 
-class ProjectManager {
-  private list = new Set<Project>();
-  activeProject: Project;
+class ProjectManager<D, T extends Project<D>> {
+  private list = new Set<T>();
+  private activeProject: T | null = null;
 
-  add(project: Project): void {
+  add(project: T): void {
     this.list.add(project);
   }
 
@@ -12,11 +12,11 @@ class ProjectManager {
     this.list.clear();
   }
 
-  current(): Project {
+  current(): T | null {
     return this.activeProject;
   }
 
-  remove(project: Project): void {
+  remove(project: T): void {
     if (!this.list.has(project)) {
       console.warn('Project not found');
       return;
@@ -24,7 +24,7 @@ class ProjectManager {
     this.list.delete(project);
   }
 
-  set(project: Project): void {
+  set(project: T): void {
     if (project && !this.list.has(project)) {
       console.warn('Project not found');
       return;

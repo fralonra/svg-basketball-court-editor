@@ -1,19 +1,22 @@
-import { BaseComponent, ConnectionType } from './components/base';
-import type { TGridComponentLayout } from './components/grid';
-import { PropPanel } from './components/propPanel';
+import { fileOpen, fileSave } from 'browser-fs-access';
+
+import { BaseComponent, ConnectionType } from './modules/formy';
+import type { TGridComponentLayout } from './modules/formy/grid';
+import { AttrPanel } from './components/attrPanel';
+import { ProjectPanel } from './components/projectPanel';
 import { Statusbar } from './components/statusbar';
 import { Toolbar } from './components/toolbar';
-import { NodePanel } from './components/nodePanel';
 import { Workspace } from './components/workspace';
-import { Project } from './modules/project/project';
 import { ProjectManager } from './modules/project/project-manager';
 import { SVGDocument, SVGNode } from './modules/svg-node';
 
-import defaultProject from './modules/basketball-court/presets/default.json';
+import defaultDocument from './modules/basketball-court/presets/default.json';
 
 import style from './editor.module.css';
+import { BasketballCourtProject } from './modules/basketball-court';
+import type { ISVGNodeJsonObject } from './modules/svg-node/svg-node';
+import type { ISVGProjectMeta } from './modules/svg-project';
 
-// const NAME_SPACE = 'http://www.w3.org/2000/svg';
 const graphicElements = [
   'circle',
   'ellipse',
@@ -26,7 +29,7 @@ const graphicElements = [
   'textPath',
   'tspan',
 ];
-const optionalProps = ['fill', 'stroke'];
+const optionalAttrs = ['fill', 'stroke'];
 
 interface IEditorOptions {
   toolbarData: TGridComponentLayout;
@@ -36,23 +39,28 @@ class Editor {
   private activeNode: SVGNode | null = null;
   private el = document.createElement('div');
   private nodeElementMap = new WeakMap<SVGNode, Element>();
-  private pm = new ProjectManager();
+  private pm = new ProjectManager<SVGDocument, BasketballCourtProject>();
 
-  private propPanel = new PropPanel();
+  private attrPanel = new AttrPanel();
+  private projectPanel = new ProjectPanel();
   private statusbar = new Statusbar();
-  private nodePanel = new NodePanel();
   private workspace = new Workspace();
 
   constructor(options: IEditorOptions) {
     this.el.className = style.editor;
 
     this.setupToolbar(options.toolbarData);
-    this.setupNodePanel();
     this.setupWorkspace();
-    this.setupPropPanel();
+    this.setupAttrPanel();
+    this.setupProjectPanel();
     this.setupStatusbar();
 
-    this.openProject();
+    // TODO: validate json
+    this.openProject(
+      '',
+      null,
+      (defaultDocument as unknown) as ISVGNodeJsonObject,
+    );
   }
 
   render(container: HTMLElement): void {
@@ -62,165 +70,124 @@ class Editor {
   private activateNode(node: SVGNode): void {
     this.activeNode = node;
 
-    for (const prop of optionalProps) {
-      if (node.attrs[prop] !== undefined) continue;
-      if (prop !== 'fill' || (prop === 'fill' && node.tag !== 'line')) {
-        node.attrs[prop] = '';
+    for (const attr of optionalAttrs) {
+      if (node.attrs[attr] !== undefined) continue;
+      if (attr !== 'fill' || (attr === 'fill' && node.tag !== 'line')) {
+        node.attrs[attr] = '';
       }
     }
 
-    this.propPanel.setupMeta(
-      { description: node.description },
-      this.nodeMetaFactory.bind(this),
-    );
-    this.propPanel.setupAttrs(node.attrs, this.nodeAttrFactory.bind(this));
+    this.attrPanel.setupData(node.attrs);
   }
 
   private addComponent<T extends BaseComponent>(component: T): void {
     this.el.appendChild(component.element);
   }
 
-  private nodeAttrFactory(
-    container: HTMLElement,
-    key: string,
-    value: any,
-  ): void {
-    const attrEl = document.createElement('div');
-    attrEl.className = 'entry';
-    attrEl.style.display = 'flex';
+  private onElementCreated(element: SVGElement, node: SVGNode): void {
+    this.nodeElementMap.set(node, element);
 
-    const labelEl = document.createElement('div');
-    labelEl.textContent = key;
-    attrEl.appendChild(labelEl);
+    if (!graphicElements.includes(element.tagName)) return;
 
-    let valueEl: HTMLElement;
-    switch (key) {
-      case 'x':
-      case 'y':
-      case 'width':
-      case 'height':
-        valueEl = document.createElement('input');
-        (valueEl as HTMLInputElement).type = 'number';
-        (valueEl as HTMLInputElement).value = value;
-        break;
-      case 'fill':
-      case 'stroke':
-        valueEl = document.createElement('input');
-        (valueEl as HTMLInputElement).type = 'color';
-        (valueEl as HTMLInputElement).value = value;
-        break;
-      default:
-        valueEl = document.createElement('input');
-        (valueEl as HTMLInputElement).type = 'text';
-        (valueEl as HTMLInputElement).value = value;
+    element.classList.add(style.path);
+    if (!element.hasAttribute('fill')) {
+      element.setAttribute('fill', 'transparent');
     }
-    if (valueEl.tagName === 'INPUT') {
-      valueEl.oninput = () => {
-        this.onNodeAttrChanged(key, (valueEl as HTMLInputElement).value);
-      };
-    }
-    attrEl.appendChild(valueEl);
-
-    container.appendChild(attrEl);
-  }
-
-  private nodeMetaFactory(
-    container: HTMLElement,
-    key: string,
-    value: any,
-  ): void {
-    const metaEl = document.createElement('div');
-    metaEl.className = 'entry';
-    metaEl.style.display = 'flex';
-
-    const labelEl = document.createElement('div');
-    labelEl.textContent = key;
-    metaEl.appendChild(labelEl);
-
-    let valueEl: HTMLElement;
-    switch (key) {
-      default:
-        valueEl = document.createElement('input');
-        (valueEl as HTMLInputElement).type = 'text';
-        (valueEl as HTMLInputElement).value = value;
-    }
-    if (valueEl.tagName === 'INPUT') {
-      valueEl.oninput = () => {
-        this.onNodeMetaChanged(key, (valueEl as HTMLInputElement).value);
-      };
-    }
-    metaEl.appendChild(valueEl);
-
-    container.appendChild(metaEl);
-  }
-
-  private onNodeAttrChanged(key: string, value: any): void {
-    // TODO
-    if (!this.activeNode) return;
-    this.activeNode.set(key, value);
-
-    const element = this.nodeElementMap.get(this.activeNode);
-    element?.setAttributeNS(null, key, value);
-  }
-
-  private onNodeMetaChanged(key: string, value: any): void {
-    if (!this.activeNode) return;
-    this.activeNode[key] = value;
-  }
-
-  private openProject(): void {
-    const rootNode = SVGNode.fromJson(defaultProject);
-
-    const document = new SVGDocument();
-    document.root = rootNode;
-
-    const project = new Project({});
-    project.document = document;
-    this.pm.set(project);
-
-    const element = document.toElement((element, node) => {
-      this.nodeElementMap.set(node, element);
-
-      if (!graphicElements.includes(element.tagName)) return;
-
-      // if (!element.hasAttributeNS(NAME_SPACE, 'fill')) {
-      //   // make path clickable
-      //   // element.setAttributeNS(null, 'fill', 'white')
-      // }
-      element.classList.add(style.path);
-      element.addEventListener('click', () => {
-        this.activateNode(node);
-      });
+    element.addEventListener('click', () => {
+      this.activateNode(node);
     });
+  }
 
-    if (element) {
-      this.nodePanel.setupNodes(rootNode, (node, element) => {
-        if (!(node as SVGNode).description) return;
-
-        if (element.firstChild) {
-          element.firstChild.textContent += ` (${
-            (node as SVGNode).description
-          })`;
-        }
+  private async onToolbarLoadJson(): Promise<void> {
+    try {
+      const blob = await fileOpen({
+        mimeTypes: ['application/json'],
+        extensions: ['.json'],
       });
+      // TODO: validate json
+      const text = await blob.text();
+      const json = JSON.parse(text);
+      this.openProject(json.name, json.meta, json.document.root);
+    } catch {}
+  }
+
+  private async onToolbarSaveJson(): Promise<void> {
+    const project = this.pm.current();
+    if (!project) return;
+
+    const projectData = project.toJson();
+    const blob = new Blob([JSON.stringify(projectData, null, 2)], {
+      type: 'application/json',
+    });
+    // fileName will not work, see https://github.com/WICG/file-system-access/issues/80
+    try {
+      await fileSave(blob, {
+        fileName: `${project.name}.json`,
+        extensions: ['.json'],
+      });
+    } catch {}
+  }
+
+  private async onToolbarSaveSvg(): Promise<void> {
+    const project = this.pm.current();
+    if (!project) return;
+
+    const svgData = project.toElement().outerHTML;
+    const blob = new Blob([svgData], {
+      type: 'image/svg+xml',
+    });
+    // fileName will not work, see https://github.com/WICG/file-system-access/issues/80
+    await fileSave(blob, {
+      fileName: `${project.name}.svg`,
+      extensions: ['.svg'],
+    });
+  }
+
+  private openProject(
+    name: string,
+    meta: ISVGProjectMeta | null,
+    node: ISVGNodeJsonObject,
+  ): void {
+    const rootNode = SVGNode.fromJson(node);
+
+    const document = new SVGDocument(rootNode);
+
+    const project = new BasketballCourtProject(name, meta, document);
+    this.pm.add(project);
+    this.pm.set(project);
+    this.projectPanel.setupData(project);
+
+    this.renderProject();
+  }
+
+  private renderProject(): void {
+    const element = this.pm
+      .current()
+      ?.toElement(this.onElementCreated.bind(this));
+    if (element) {
       this.workspace.render(element);
     }
   }
 
-  private setupNodePanel(): void {
-    const nodePanel = new NodePanel<SVGNode>();
-    nodePanel.onNodeSelect((node) => {
-      this.activateNode(node);
-    });
+  private setupAttrPanel(): void {
+    this.attrPanel.callback = (key, value) => {
+      if (!this.activeNode) return;
+      this.activeNode.set(key, value);
 
-    this.nodePanel = nodePanel;
-    this.addComponent(nodePanel);
+      const element = this.nodeElementMap.get(this.activeNode);
+      element?.setAttributeNS(null, key, value);
+    };
+    this.addComponent(this.attrPanel);
   }
 
-  private setupPropPanel(): void {
-    const propPanel = new PropPanel();
-    this.propPanel = propPanel;
-    this.addComponent(propPanel);
+  private setupProjectPanel(): void {
+    this.projectPanel.callback = this.renderProject.bind(this);
+
+    this.addComponent(this.projectPanel);
+
+    const project = this.pm.current();
+    if (!project) return;
+    this.projectPanel.setupData(project);
   }
 
   private setupStatusbar(): void {
@@ -232,10 +199,21 @@ class Editor {
   private setupToolbar(layout: TGridComponentLayout): void {
     const toolbar = new Toolbar();
     toolbar.setupLayout(layout);
-    toolbar.connect('toolbar-save', ConnectionType.Click, () => {});
-    toolbar.connect('toolbar-new', ConnectionType.Click, () => {});
-    toolbar.connect('toolbar-close', ConnectionType.Click, () => {});
-    toolbar.connect('toolbar-preview', ConnectionType.Click, () => {});
+    toolbar.connect(
+      'toolbar-load-json',
+      ConnectionType.Click,
+      this.onToolbarLoadJson.bind(this),
+    );
+    toolbar.connect(
+      'toolbar-save-json',
+      ConnectionType.Click,
+      this.onToolbarSaveJson.bind(this),
+    );
+    toolbar.connect(
+      'toolbar-save-svg',
+      ConnectionType.Click,
+      this.onToolbarSaveSvg.bind(this),
+    );
     this.addComponent(toolbar);
   }
 

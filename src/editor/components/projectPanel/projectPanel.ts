@@ -1,58 +1,41 @@
-import { BaseComponent } from '../base';
+import type { BasketballCourtProject } from 'src/editor/modules/basketball-court';
+import { BasePanel, THtmlInputType } from '../../modules/formy';
 import style from './projectPanel.module.css';
 
-interface IProject {
-  tag: string;
-  children?: IProject[];
-}
+class ProjectPanel extends BasePanel<BasketballCourtProject> {
+  protected propInputTypeMap: { [key: string]: THtmlInputType } = {
+    width: 'number',
+  };
+  private project: BasketballCourtProject | null = null;
 
-class ProjectPanel<T extends IProject> extends BaseComponent {
-  private callback = (project: T) => {};
+  callback = (project: BasketballCourtProject) => {};
 
   constructor() {
     super();
 
-    this.el.className = style.panel;
+    this.el.classList.add(style.panel);
   }
 
-  onProjectSelect(callback: (project: T) => void): void {
-    this.callback = callback;
-  }
-
-  setupProjects(
-    project: T,
-    callback?: (project: T, element: HTMLDivElement) => void,
-  ): void {
+  setupData(project: BasketballCourtProject): void {
     this.el.innerHTML = '';
+    this.project = project;
 
-    this.setupProject(project, this.el, callback);
-  }
-
-  private setupProject(
-    project: T,
-    parent: HTMLElement,
-    callback?: (project: T, element: HTMLDivElement) => void,
-  ): void {
-    const element = document.createElement('div');
-    element.className = style.project;
-
-    const item = document.createElement('div');
-    item.className = style.item;
-    item.textContent = project.tag;
-    item.onclick = () => {
-      this.callback(project);
-    };
-    element.appendChild(item);
-
-    if (project.children) {
-      for (const child of project.children) {
-        this.setupProject(child, element, callback);
+    this.createInput('name', this.project.name, (key, value) => {
+      if (this.project) {
+        this.project.name = value;
       }
-    }
+    });
 
-    parent.appendChild(element);
-    if (callback) {
-      callback(project, element);
+    const meta = project.meta;
+    for (const key in meta) {
+      if (meta[key] === undefined) continue;
+
+      this.createInput(key, meta[key], (key, value) => {
+        if (this.project) {
+          this.project.meta[key] = value;
+          this.callback(this.project);
+        }
+      });
     }
   }
 }

@@ -16,6 +16,9 @@
   overflow: hidden;
 }
 
+.path {
+  transition: all 0.1s ease;
+}
 .path:hover {
   cursor: pointer;
   fill: yellow;

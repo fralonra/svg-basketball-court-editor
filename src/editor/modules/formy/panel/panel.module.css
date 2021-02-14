@@ -1,0 +1,18 @@
+.panel {
+  padding: 10px;
+  background-color: #2d2d2d;
+  transition: all 0.3s ease;
+}
+
+.propItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+}
+
+.propLabel {
+  margin-right: 8px;
+}
+
+.propValue {
+}
