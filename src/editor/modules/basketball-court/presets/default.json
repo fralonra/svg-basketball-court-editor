@@ -1,0 +1,29 @@
+{
+  "tag": "svg",
+  "attrs": {
+    "width": 15,
+    "height": 28,
+    "xmlns": "http://www.w3.org/2000/svg"
+  },
+  "children": [
+    {
+      "tag": "g",
+      "attrs": {
+        "fill": "none",
+        "stroke": "#000"
+      },
+      "children": [
+        {
+          "tag": "rect",
+          "description": "half-court",
+          "attrs": {
+            "x": 0,
+            "y": 0,
+            "width": 15,
+            "height": 14
+          }
+        }
+      ]
+    }
+  ]
+}

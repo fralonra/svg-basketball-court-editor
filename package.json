@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "start": "snowpack dev",
+    "build": "snowpack build",
+    "test": "jest",
+    "format": "prettier --write \"src/**/*.{js,ts}\"",
+    "lint": "prettier --check \"src/**/*.{js,ts}\""
+  },
+  "devDependencies": {
+    "@snowpack/plugin-typescript": "^1.2.1",
+    "prettier": "^2.2.1",
+    "snowpack": "^3.0.11",
+    "typescript": "^4.1.5"
+  }
+}

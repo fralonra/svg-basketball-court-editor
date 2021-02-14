@@ -1,0 +1,22 @@
+.editor {
+  display: grid;
+  grid-template-columns:
+    minmax(min-content, 1fr)
+    minmax(auto, 70%)
+    minmax(min-content, 2fr);
+  grid-template-rows: min-content auto min-content;
+  grid-template-areas:
+    'header header header'
+    'left main right'
+    'footer footer footer';
+  width: 100vw;
+  height: 100vh;
+  color: #fff;
+  background-color: #353535;
+  overflow: hidden;
+}
+
+.path:hover {
+  cursor: pointer;
+  fill: yellow;
+}

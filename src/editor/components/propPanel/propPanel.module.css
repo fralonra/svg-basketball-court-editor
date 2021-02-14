@@ -1,0 +1,10 @@
+.panel {
+  grid-area: right;
+  padding: 10px;
+  background-color: #2d2d2d;
+  transition: all 0.3s ease;
+}
+
+.hide {
+  transform: translateX(50vw);
+}

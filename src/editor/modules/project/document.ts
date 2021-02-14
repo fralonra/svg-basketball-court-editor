@@ -1,0 +1,3 @@
+interface IDocument {}
+
+export { IDocument };

@@ -1,0 +1,6 @@
+.toolbar {
+  grid-area: header;
+  display: flex;
+  padding: 10px;
+  background-color: #1e1e1e;
+}
