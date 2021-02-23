@@ -7,15 +7,14 @@ import { ProjectPanel } from './components/projectPanel';
 import { Statusbar } from './components/statusbar';
 import { Toolbar } from './components/toolbar';
 import { Workspace } from './components/workspace';
+import { BasketballCourtProject } from './modules/basketball-court';
 import { ProjectManager } from './modules/project/project-manager';
-import { SVGDocument, SVGNode } from './modules/svg-node';
+import { ISVGNodeJsonObject, SVGDocument, SVGNode } from './modules/svg-node';
+import type { ISVGProjectMeta } from './modules/svg-project';
 
 import defaultDocument from './modules/basketball-court/presets/default.json';
 
 import style from './editor.module.css';
-import { BasketballCourtProject } from './modules/basketball-court';
-import type { ISVGNodeJsonObject } from './modules/svg-node/svg-node';
-import type { ISVGProjectMeta } from './modules/svg-project';
 
 const graphicElements = [
   'circle',
