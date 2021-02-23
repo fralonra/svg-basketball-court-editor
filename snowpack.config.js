@@ -1,9 +1,13 @@
 module.exports = {
   mount: {
     public: '/',
-    src: '/_dist_',
+    src: '/dist',
   },
   plugins: ['@snowpack/plugin-typescript'],
+  buildOptions: {
+    baseUrl: '/svg-basketball-court-editor',
+    metaUrlPath: 'meta',
+  },
   optimize: {
     bundle: true,
     minify: true,
