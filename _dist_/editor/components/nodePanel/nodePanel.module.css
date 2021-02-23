@@ -1,0 +1,17 @@
+.panel {
+  grid-area: left;
+  background-color: #2d2d2d;
+  transition: all 0.3s ease;
+}
+
+.node {
+}
+
+.item {
+  padding: 2px 6px;
+  transition: all 0.3s ease;
+}
+.item:hover {
+  cursor: pointer;
+  background-color: #3d3d3d;
+}

@@ -1,0 +1,7 @@
+.statusbar {
+  grid-area: footer;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 10px;
+  background-color: #1e1e1e;
+}

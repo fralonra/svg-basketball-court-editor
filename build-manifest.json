@@ -1,0 +1,600 @@
+{
+  "inputs": {
+    "_dist_/editor/styles/base.css": {
+      "bytes": 247,
+      "imports": []
+    },
+    "_dist_/editor/styles/common.css": {
+      "bytes": 359,
+      "imports": []
+    },
+    "_dist_/editor/styles/main.css": {
+      "bytes": 46,
+      "imports": [
+        {
+          "path": "_dist_/editor/styles/base.css",
+          "kind": "import-rule"
+        },
+        {
+          "path": "_dist_/editor/styles/common.css",
+          "kind": "import-rule"
+        }
+      ]
+    },
+    "_snowpack/pkg/common/file-open-5eb48e45.js": {
+      "bytes": 422,
+      "imports": []
+    },
+    "_snowpack/pkg/common/file-open-aa0e13c8.js": {
+      "bytes": 469,
+      "imports": []
+    },
+    "_snowpack/pkg/common/file-open-baef1b62.js": {
+      "bytes": 411,
+      "imports": []
+    },
+    "_snowpack/pkg/common/directory-open-abd2ea6b.js": {
+      "bytes": 608,
+      "imports": []
+    },
+    "_snowpack/pkg/common/directory-open-15776d53.js": {
+      "bytes": 591,
+      "imports": []
+    },
+    "_snowpack/pkg/common/directory-open-67ace1ea.js": {
+      "bytes": 425,
+      "imports": []
+    },
+    "_snowpack/pkg/common/file-save-bedc4f3a.js": {
+      "bytes": 408,
+      "imports": []
+    },
+    "_snowpack/pkg/common/file-save-d64fc637.js": {
+      "bytes": 493,
+      "imports": []
+    },
+    "_snowpack/pkg/common/file-save-f0a9af4f.js": {
+      "bytes": 337,
+      "imports": []
+    },
+    "_snowpack/pkg/browser-fs-access.js": {
+      "bytes": 1098,
+      "imports": [
+        {
+          "path": "_snowpack/pkg/common/file-open-5eb48e45.js",
+          "kind": "dynamic-import"
+        },
+        {
+          "path": "_snowpack/pkg/common/file-open-aa0e13c8.js",
+          "kind": "dynamic-import"
+        },
+        {
+          "path": "_snowpack/pkg/common/file-open-baef1b62.js",
+          "kind": "dynamic-import"
+        },
+        {
+          "path": "_snowpack/pkg/common/directory-open-abd2ea6b.js",
+          "kind": "dynamic-import"
+        },
+        {
+          "path": "_snowpack/pkg/common/directory-open-15776d53.js",
+          "kind": "dynamic-import"
+        },
+        {
+          "path": "_snowpack/pkg/common/directory-open-67ace1ea.js",
+          "kind": "dynamic-import"
+        },
+        {
+          "path": "_snowpack/pkg/common/file-save-bedc4f3a.js",
+          "kind": "dynamic-import"
+        },
+        {
+          "path": "_snowpack/pkg/common/file-save-d64fc637.js",
+          "kind": "dynamic-import"
+        },
+        {
+          "path": "_snowpack/pkg/common/file-save-f0a9af4f.js",
+          "kind": "dynamic-import"
+        }
+      ]
+    },
+    "_dist_/editor/modules/formy/base.js": {
+      "bytes": 755,
+      "imports": []
+    },
+    "_dist_/editor/modules/formy/panel/panel.module.css.proxy.js": {
+      "bytes": 766,
+      "imports": []
+    },
+    "_dist_/editor/modules/formy/panel/base.js": {
+      "bytes": 1233,
+      "imports": [
+        {
+          "path": "_dist_/editor/modules/formy/base.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_dist_/editor/modules/formy/panel/panel.module.css.proxy.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_dist_/editor/modules/formy/panel/index.js": {
+      "bytes": 27,
+      "imports": [
+        {
+          "path": "_dist_/editor/modules/formy/panel/base.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_dist_/editor/modules/formy/grid.js": {
+      "bytes": 748,
+      "imports": [
+        {
+          "path": "_dist_/editor/modules/formy/base.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_dist_/editor/modules/formy/index.js": {
+      "bytes": 88,
+      "imports": [
+        {
+          "path": "_dist_/editor/modules/formy/base.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_dist_/editor/modules/formy/panel/index.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_dist_/editor/modules/formy/grid.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_dist_/editor/components/attrPanel/attrPanel.module.css.proxy.js": {
+      "bytes": 431,
+      "imports": []
+    },
+    "_dist_/editor/components/attrPanel/attrPanel.js": {
+      "bytes": 614,
+      "imports": [
+        {
+          "path": "_dist_/editor/modules/formy/index.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_dist_/editor/components/attrPanel/attrPanel.module.css.proxy.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_dist_/editor/components/attrPanel/index.js": {
+      "bytes": 32,
+      "imports": [
+        {
+          "path": "_dist_/editor/components/attrPanel/attrPanel.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_dist_/editor/components/projectPanel/projectPanel.module.css.proxy.js": {
+      "bytes": 430,
+      "imports": []
+    },
+    "_dist_/editor/components/projectPanel/projectPanel.js": {
+      "bytes": 908,
+      "imports": [
+        {
+          "path": "_dist_/editor/modules/formy/index.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_dist_/editor/components/projectPanel/projectPanel.module.css.proxy.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_dist_/editor/components/projectPanel/index.js": {
+      "bytes": 35,
+      "imports": [
+        {
+          "path": "_dist_/editor/components/projectPanel/projectPanel.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_dist_/editor/components/statusbar/statusbar.module.css.proxy.js": {
+      "bytes": 549,
+      "imports": []
+    },
+    "_dist_/editor/components/statusbar/statusbar.js": {
+      "bytes": 251,
+      "imports": [
+        {
+          "path": "_dist_/editor/modules/formy/index.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_dist_/editor/components/statusbar/statusbar.module.css.proxy.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_dist_/editor/components/statusbar/index.js": {
+      "bytes": 32,
+      "imports": [
+        {
+          "path": "_dist_/editor/components/statusbar/statusbar.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_dist_/editor/components/toolbar/toolbar.module.css.proxy.js": {
+      "bytes": 796,
+      "imports": []
+    },
+    "_dist_/editor/components/toolbar/toolbar.js": {
+      "bytes": 345,
+      "imports": [
+        {
+          "path": "_dist_/editor/modules/formy/index.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_dist_/editor/components/toolbar/toolbar.module.css.proxy.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_dist_/editor/components/toolbar/index.js": {
+      "bytes": 30,
+      "imports": [
+        {
+          "path": "_dist_/editor/components/toolbar/toolbar.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_dist_/editor/components/workspace/workspace.module.css.proxy.js": {
+      "bytes": 554,
+      "imports": []
+    },
+    "_dist_/editor/components/workspace/workspace.js": {
+      "bytes": 415,
+      "imports": [
+        {
+          "path": "_dist_/editor/modules/formy/index.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_dist_/editor/components/workspace/workspace.module.css.proxy.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_dist_/editor/components/workspace/index.js": {
+      "bytes": 32,
+      "imports": [
+        {
+          "path": "_dist_/editor/components/workspace/workspace.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_dist_/editor/modules/project/project-manager.js": {
+      "bytes": 580,
+      "imports": []
+    },
+    "_dist_/editor/modules/project/project.js": {
+      "bytes": 380,
+      "imports": []
+    },
+    "_dist_/editor/modules/project/index.js": {
+      "bytes": 68,
+      "imports": [
+        {
+          "path": "_dist_/editor/modules/project/project-manager.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_dist_/editor/modules/project/project.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_dist_/editor/modules/svg-project/svg-project.js": {
+      "bytes": 1207,
+      "imports": [
+        {
+          "path": "_dist_/editor/modules/project/index.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_dist_/editor/modules/svg-project/index.js": {
+      "bytes": 34,
+      "imports": [
+        {
+          "path": "_dist_/editor/modules/svg-project/svg-project.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_dist_/editor/modules/basketball-court/basketball-court-project.js": {
+      "bytes": 349,
+      "imports": [
+        {
+          "path": "_dist_/editor/modules/svg-project/index.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_dist_/editor/modules/basketball-court/index.js": {
+      "bytes": 47,
+      "imports": [
+        {
+          "path": "_dist_/editor/modules/basketball-court/basketball-court-project.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_snowpack/pkg/svg-jnode.js": {
+      "bytes": 3091,
+      "imports": []
+    },
+    "_dist_/editor/modules/svg-node/index.js": {
+      "bytes": 193,
+      "imports": [
+        {
+          "path": "_snowpack/pkg/svg-jnode.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_dist_/editor/modules/basketball-court/presets/default.json.proxy.js": {
+      "bytes": 1882,
+      "imports": []
+    },
+    "_dist_/editor/editor.module.css.proxy.js": {
+      "bytes": 943,
+      "imports": []
+    },
+    "_dist_/editor/editor.js": {
+      "bytes": 5188,
+      "imports": [
+        {
+          "path": "_snowpack/pkg/browser-fs-access.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_dist_/editor/modules/formy/index.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_dist_/editor/components/attrPanel/index.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_dist_/editor/components/projectPanel/index.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_dist_/editor/components/statusbar/index.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_dist_/editor/components/toolbar/index.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_dist_/editor/components/workspace/index.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_dist_/editor/modules/basketball-court/index.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_dist_/editor/modules/project/project-manager.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_dist_/editor/modules/svg-node/index.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_dist_/editor/modules/basketball-court/presets/default.json.proxy.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_dist_/editor/editor.module.css.proxy.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_dist_/editor/index.js": {
+      "bytes": 64,
+      "imports": [
+        {
+          "path": "_dist_/editor/styles/main.css",
+          "kind": "import-statement"
+        },
+        {
+          "path": "_dist_/editor/editor.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "_dist_/index.js": {
+      "bytes": 468,
+      "imports": [
+        {
+          "path": "_dist_/editor/index.js",
+          "kind": "import-statement"
+        }
+      ]
+    }
+  },
+  "outputs": {
+    "../~~bundle~~/_dist_/index.js": {
+      "imports": [],
+      "exports": [],
+      "inputs": {
+        "_snowpack/pkg/common/file-open-5eb48e45.js": {
+          "bytesInOutput": 347
+        },
+        "_snowpack/pkg/common/file-open-aa0e13c8.js": {
+          "bytesInOutput": 391
+        },
+        "_snowpack/pkg/common/file-open-baef1b62.js": {
+          "bytesInOutput": 336
+        },
+        "_snowpack/pkg/common/directory-open-abd2ea6b.js": {
+          "bytesInOutput": 515
+        },
+        "_snowpack/pkg/common/directory-open-15776d53.js": {
+          "bytesInOutput": 498
+        },
+        "_snowpack/pkg/common/directory-open-67ace1ea.js": {
+          "bytesInOutput": 340
+        },
+        "_snowpack/pkg/common/file-save-bedc4f3a.js": {
+          "bytesInOutput": 341
+        },
+        "_snowpack/pkg/common/file-save-d64fc637.js": {
+          "bytesInOutput": 421
+        },
+        "_snowpack/pkg/common/file-save-f0a9af4f.js": {
+          "bytesInOutput": 264
+        },
+        "_dist_/editor/styles/main.css": {
+          "bytesInOutput": 0
+        },
+        "_snowpack/pkg/browser-fs-access.js": {
+          "bytesInOutput": 648
+        },
+        "_dist_/editor/modules/formy/base.js": {
+          "bytesInOutput": 360
+        },
+        "_dist_/editor/modules/formy/index.js": {
+          "bytesInOutput": 0
+        },
+        "_dist_/editor/modules/formy/panel/panel.module.css.proxy.js": {
+          "bytesInOutput": 562
+        },
+        "_dist_/editor/modules/formy/panel/base.js": {
+          "bytesInOutput": 595
+        },
+        "_dist_/editor/modules/formy/panel/index.js": {
+          "bytesInOutput": 0
+        },
+        "_dist_/editor/modules/formy/grid.js": {
+          "bytesInOutput": 375
+        },
+        "_dist_/editor/components/attrPanel/attrPanel.module.css.proxy.js": {
+          "bytesInOutput": 248
+        },
+        "_dist_/editor/components/attrPanel/attrPanel.js": {
+          "bytesInOutput": 278
+        },
+        "_dist_/editor/components/attrPanel/index.js": {
+          "bytesInOutput": 0
+        },
+        "_dist_/editor/components/projectPanel/projectPanel.module.css.proxy.js": {
+          "bytesInOutput": 247
+        },
+        "_dist_/editor/components/projectPanel/projectPanel.js": {
+          "bytesInOutput": 435
+        },
+        "_dist_/editor/components/projectPanel/index.js": {
+          "bytesInOutput": 0
+        },
+        "_dist_/editor/components/statusbar/statusbar.module.css.proxy.js": {
+          "bytesInOutput": 362
+        },
+        "_dist_/editor/components/statusbar/statusbar.js": {
+          "bytesInOutput": 76
+        },
+        "_dist_/editor/components/statusbar/index.js": {
+          "bytesInOutput": 0
+        },
+        "_dist_/editor/components/toolbar/toolbar.module.css.proxy.js": {
+          "bytesInOutput": 595
+        },
+        "_dist_/editor/components/toolbar/toolbar.js": {
+          "bytesInOutput": 138
+        },
+        "_dist_/editor/components/toolbar/index.js": {
+          "bytesInOutput": 0
+        },
+        "_dist_/editor/components/workspace/workspace.module.css.proxy.js": {
+          "bytesInOutput": 366
+        },
+        "_dist_/editor/components/workspace/workspace.js": {
+          "bytesInOutput": 183
+        },
+        "_dist_/editor/components/workspace/index.js": {
+          "bytesInOutput": 0
+        },
+        "_dist_/editor/modules/project/project-manager.js": {
+          "bytesInOutput": 343
+        },
+        "_dist_/editor/modules/project/index.js": {
+          "bytesInOutput": 0
+        },
+        "_dist_/editor/modules/project/project.js": {
+          "bytesInOutput": 193
+        },
+        "_dist_/editor/modules/svg-project/svg-project.js": {
+          "bytesInOutput": 652
+        },
+        "_dist_/editor/modules/svg-project/index.js": {
+          "bytesInOutput": 0
+        },
+        "_dist_/editor/modules/basketball-court/basketball-court-project.js": {
+          "bytesInOutput": 145
+        },
+        "_dist_/editor/modules/basketball-court/index.js": {
+          "bytesInOutput": 0
+        },
+        "_snowpack/pkg/svg-jnode.js": {
+          "bytesInOutput": 1654
+        },
+        "_dist_/editor/modules/basketball-court/presets/default.json.proxy.js": {
+          "bytesInOutput": 1650
+        },
+        "_dist_/editor/editor.module.css.proxy.js": {
+          "bytesInOutput": 736
+        },
+        "_dist_/editor/editor.js": {
+          "bytesInOutput": 2666
+        },
+        "_dist_/editor/index.js": {
+          "bytesInOutput": 0
+        },
+        "_dist_/index.js": {
+          "bytesInOutput": 293
+        }
+      },
+      "bytes": 17933
+    },
+    "../~~bundle~~/_dist_/index.css": {
+      "imports": [],
+      "inputs": {
+        "_dist_/editor/styles/base.css": {
+          "bytesInOutput": 202
+        },
+        "_dist_/editor/styles/common.css": {
+          "bytesInOutput": 290
+        },
+        "_dist_/editor/styles/main.css": {
+          "bytesInOutput": 0
+        }
+      },
+      "bytes": 493
+    }
+  }
+}

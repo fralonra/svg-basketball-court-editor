@@ -1,0 +1,19 @@
+.toolbar {
+  grid-area: header;
+  display: flex;
+  padding: 10px;
+  background-color: #1e1e1e;
+}
+
+.toolbarItem {
+  padding: 2px 8px;
+  margin: 0 4px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  color: #1e1e1e;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.toolbarItem:hover {
+  background-color: #e3e3e3;
+}
