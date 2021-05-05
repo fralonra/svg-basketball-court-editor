@@ -98,6 +98,10 @@
         }
       ]
     },
+    "dist/editor/modules/formy/application.js": {
+      "bytes": 379,
+      "imports": []
+    },
     "dist/editor/modules/formy/base.js": {
       "bytes": 755,
       "imports": []
@@ -138,8 +142,12 @@
       ]
     },
     "dist/editor/modules/formy/index.js": {
-      "bytes": 88,
+      "bytes": 122,
       "imports": [
+        {
+          "path": "dist/editor/modules/formy/application.js",
+          "kind": "import-statement"
+        },
         {
           "path": "dist/editor/modules/formy/base.js",
           "kind": "import-statement"
@@ -363,14 +371,10 @@
       "imports": []
     },
     "dist/editor/editor.js": {
-      "bytes": 5183,
+      "bytes": 4796,
       "imports": [
         {
           "path": "meta/pkg/browser-fs-access.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "dist/editor/modules/formy/index.js",
           "kind": "import-statement"
         },
         {
@@ -395,6 +399,10 @@
         },
         {
           "path": "dist/editor/modules/basketball-court/index.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "dist/editor/modules/formy/index.js",
           "kind": "import-statement"
         },
         {
@@ -476,11 +484,14 @@
         "meta/pkg/browser-fs-access.js": {
           "bytesInOutput": 648
         },
-        "dist/editor/modules/formy/base.js": {
-          "bytesInOutput": 360
+        "dist/editor/modules/formy/application.js": {
+          "bytesInOutput": 209
         },
         "dist/editor/modules/formy/index.js": {
           "bytesInOutput": 0
+        },
+        "dist/editor/modules/formy/base.js": {
+          "bytesInOutput": 360
         },
         "dist/editor/modules/formy/panel/panel.module.css.proxy.js": {
           "bytesInOutput": 562
@@ -531,10 +542,10 @@
           "bytesInOutput": 0
         },
         "dist/editor/components/workspace/workspace.module.css.proxy.js": {
-          "bytesInOutput": 366
+          "bytesInOutput": 367
         },
         "dist/editor/components/workspace/workspace.js": {
-          "bytesInOutput": 183
+          "bytesInOutput": 184
         },
         "dist/editor/components/workspace/index.js": {
           "bytesInOutput": 0
@@ -570,7 +581,7 @@
           "bytesInOutput": 736
         },
         "dist/editor/editor.js": {
-          "bytesInOutput": 2666
+          "bytesInOutput": 2480
         },
         "dist/editor/index.js": {
           "bytesInOutput": 0
@@ -579,7 +590,7 @@
           "bytesInOutput": 293
         }
       },
-      "bytes": 17933
+      "bytes": 17958
     },
     "../~~bundle~~/dist/index.css": {
       "imports": [],
